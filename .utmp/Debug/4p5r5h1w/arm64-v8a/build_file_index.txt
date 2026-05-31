@@ -1,0 +1,2 @@
+D:\Chalvin\KULIAH\SEM 7\KUSUKATA\FLARE-2.0\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Chalvin\KULIAH\SEM 7\KUSUKATA\FLARE-2.0\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c72dbc8848f9e124f82be6aa120c96b5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fireParticle: {instanceID: 0}
+  - fireAudioSource: {instanceID: 0}
+  - fireLoopClip: {fileID: 8300000, guid: 81f6d693e3482764aa2feb222a9148aa, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

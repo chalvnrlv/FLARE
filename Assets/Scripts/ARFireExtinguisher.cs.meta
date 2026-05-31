@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: ab5991b7154a62543bb5eb6fd3624ecf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sprayParticle: {instanceID: 0}
+  - nozzleTransform: {instanceID: 0}
+  - sprayOrigin: {instanceID: 0}
+  - equipAnchor: {instanceID: 0}
+  - extinguisherUiRoot: {instanceID: 0}
+  - pullPinButton: {instanceID: 0}
+  - fireHoldButton: {instanceID: 0}
+  - typeLeftButton: {instanceID: 0}
+  - typeRightButton: {instanceID: 0}
+  - progressUi: {instanceID: 0}
+  - capacityFillImage: {instanceID: 0}
+  - capacityText: {instanceID: 0}
+  - extinguisherTypeText: {instanceID: 0}
+  - sprayAudioSource: {instanceID: 0}
+  - sprayLoopClip: {fileID: 8300000, guid: fa49770f0f86b9c4b8b2bad7b0577dba, type: 3}
+  - labelRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

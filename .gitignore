@@ -1,0 +1,52 @@
+# Unity generated
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# Memory captures and profiler data
+MemoryCaptures/
+ProfilerCaptures/
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Unity3d generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3d generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+
+# Addressables
+/Assets/AddressableAssetsData/*/*.bin*
+
+# OS files
+.DS_Store
+Thumbs.db
