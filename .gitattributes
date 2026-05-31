@@ -1,1 +1,2 @@
+*.abc filter=lfs diff=lfs merge=lfs -text
 Assets/Models/waterbc.abc filter=lfs diff=lfs merge=lfs -text
