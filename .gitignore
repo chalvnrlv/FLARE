@@ -6,7 +6,8 @@ Build/
 Builds/
 Logs/
 UserSettings/
-
+.utmp/
+.venv/
 # Memory captures and profiler data
 MemoryCaptures/
 ProfilerCaptures/

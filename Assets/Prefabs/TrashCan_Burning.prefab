@@ -5199,6 +5199,18 @@ PrefabInstance:
       value: TrashCan_Burning
       objectReference: {fileID: 0}
     - target: {fileID: 905854760471791087, guid: 75734e580ff4c914e89c78ea788caabc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 905854760471791087, guid: 75734e580ff4c914e89c78ea788caabc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 905854760471791087, guid: 75734e580ff4c914e89c78ea788caabc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 905854760471791087, guid: 75734e580ff4c914e89c78ea788caabc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

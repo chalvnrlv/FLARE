@@ -18,6 +18,7 @@ public class ARLevelLoader : MonoBehaviour
     private bool isLoading;
 
     public string CurrentLevelName => currentLevelName;
+    public bool IsLoading => isLoading;
 
     public static void RequestARResetOnNextLoad()
     {

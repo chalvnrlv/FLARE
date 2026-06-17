@@ -46,6 +46,12 @@ public class ARTapToPlaceEvacuation : MonoBehaviour
     [SerializeField] private float callTimeoutSeconds = 5f;
     [SerializeField] private float wrongDialClearDelay = 0.6f;
 
+    [Header("Audio Sirene")]
+    [Tooltip("AudioSource untuk sirene. Jika kosong, dibuat atau ditemukan otomatis.")]
+    [SerializeField] private AudioSource sireneAudioSource;
+    [Tooltip("AudioClip sirene yang diputar looping saat nomor damkar benar dimasukkan.")]
+    [SerializeField] private AudioClip sireneClip;
+
     [Header("Placement")]
     [SerializeField] private int requiredPlaneCount = 3;
     // [SerializeField] private float fogHeightFromPlane = 0.75f;
@@ -74,6 +80,7 @@ public class ARTapToPlaceEvacuation : MonoBehaviour
     private void Awake()
     {
         ResolveReferences();
+        ResolveSireneAudioSource();
         PrepareTimer();
         SetOverlayVisible(false);
         UpdateDialogueMessage();
@@ -93,6 +100,7 @@ public class ARTapToPlaceEvacuation : MonoBehaviour
         }
 
         dialPadHooked = false;
+        StopSirene();
     }
 
     private void Update()
@@ -530,6 +538,7 @@ public class ARTapToPlaceEvacuation : MonoBehaviour
     {
         waitingForCall = false;
         SetDialPadVisible(false);
+        PlaySirene();
         if (timer != null)
         {
             timer.TriggerWinWithMessage("Kerja Bagus !");
@@ -553,6 +562,47 @@ public class ARTapToPlaceEvacuation : MonoBehaviour
 
         Vector3 closest = collider.ClosestPoint(worldPosition);
         return (closest - worldPosition).sqrMagnitude < 0.0001f;
+    }
+
+    // ── Audio Sirene ───────────────────────────────────────────────
+
+    private void ResolveSireneAudioSource()
+    {
+        if (sireneAudioSource != null)
+        {
+            return;
+        }
+
+        sireneAudioSource = GetComponent<AudioSource>();
+        if (sireneAudioSource == null)
+        {
+            sireneAudioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        sireneAudioSource.playOnAwake = false;
+        sireneAudioSource.loop = true;
+    }
+
+    private void PlaySirene()
+    {
+        if (sireneAudioSource == null || sireneClip == null)
+        {
+            return;
+        }
+
+        sireneAudioSource.clip = sireneClip;
+        sireneAudioSource.loop = true;
+        sireneAudioSource.Play();
+    }
+
+    private void StopSirene()
+    {
+        if (sireneAudioSource == null || !sireneAudioSource.isPlaying)
+        {
+            return;
+        }
+
+        sireneAudioSource.Stop();
     }
 
     private Collider ResolveEvacuationCollider(GameObject root)

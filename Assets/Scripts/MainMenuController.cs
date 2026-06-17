@@ -1,10 +1,14 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 namespace Flare.UI
 {
     public class MainMenuController : MonoBehaviour
     {
+        [Header("Panel Panduan")]
+        [Tooltip("Drag PanduanPanel GameObject (yang memiliki komponen PanduanPanelController) ke sini.")]
+        public PanduanPanelController panduanPanel;
+
         public void StartSimulasi()
         {
             RecapManager.RequestNewRun();
@@ -20,10 +24,21 @@ namespace Flare.UI
         //     Debug.Log("Membuka Pustaka Edukasi Kebakaran...");
         // }
 
+        /// <summary>
+        /// Dipanggil oleh panduanButton.onClick ─ membuka panel panduan.
+        /// </summary>
+        public void OpenPanduan()
+        {
+            if (panduanPanel != null)
+                panduanPanel.ShowPanel();
+            else
+                Debug.LogWarning("[MainMenu] panduanPanel belum di-assign di Inspector!", this);
+        }
+
         public void Quit()
         {
             Debug.Log("Keluar dari aplikasi FLARE.");
             Application.Quit();
         }
     }
-}
+}

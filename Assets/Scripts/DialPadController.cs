@@ -13,6 +13,12 @@ public class DialPadController : MonoBehaviour
     [SerializeField] private string enterButtonName = "Enter";
     [SerializeField] private Color errorColor = Color.red;
 
+    [Header("Audio")]
+    [Tooltip("AudioSource yang akan memutar suara tombol. Jika kosong, akan dicari atau dibuat otomatis.")]
+    [SerializeField] private AudioSource audioSource;
+    [Tooltip("Suara feedback saat tombol angka ditekan (beep/klik).")]
+    [SerializeField] private AudioClip dialBeepClip;
+
     public event Action<string> CallPressed;
 
     private string currentInput = string.Empty;
@@ -21,6 +27,7 @@ public class DialPadController : MonoBehaviour
     private void Awake()
     {
         ResolveReferences();
+        ResolveAudioSource();
         if (autoWireButtons)
         {
             AutoWireButtons();
@@ -32,6 +39,21 @@ public class DialPadController : MonoBehaviour
         }
 
         UpdateDisplay();
+    }
+
+    private void ResolveAudioSource()
+    {
+        if (audioSource != null)
+        {
+            return;
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
     }
 
     private void ResolveReferences()
@@ -136,7 +158,18 @@ public class DialPadController : MonoBehaviour
         }
 
         currentInput += digit;
+        PlayDialBeep();
         UpdateDisplay();
+    }
+
+    private void PlayDialBeep()
+    {
+        if (audioSource == null || dialBeepClip == null)
+        {
+            return;
+        }
+
+        audioSource.PlayOneShot(dialBeepClip);
     }
 
     public void ClearInput()

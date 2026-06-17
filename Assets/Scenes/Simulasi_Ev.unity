@@ -171,6 +171,8 @@ MonoBehaviour:
   evacuationPathPrefab: {fileID: 1839843043329278190, guid: 298d1abed8bccb04ab57445a58f915c3, type: 3}
   textDialogueName: TextDialogue
   textDialogue: {fileID: 0}
+  textContainerName: TextContainer
+  textContainer: {fileID: 0}
   scanMessage: Gerakan ponsel anda di sekitar bidang datar untuk memulai simulasi!
   tapMessage: Sentuh area yang terdeteksi untuk memulai simulasi!
   startMessage: Ikuti jalur untuk segera Evakuasi!
@@ -187,6 +189,8 @@ MonoBehaviour:
   callFailMessage: Telepon pemadam kebakaran sekarang!
   callTimeoutSeconds: 5
   wrongDialClearDelay: 0.6
+  sireneAudioSource: {fileID: 0}
+  sireneClip: {fileID: 8300000, guid: 42a9760f28ffb1c40854eab991fd2348, type: 3}
   requiredPlaneCount: 2
   insideFogFailSeconds: 5
   evacuationPointChildName: EvacuationPoint

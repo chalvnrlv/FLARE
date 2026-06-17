@@ -56,8 +56,10 @@ public class ARSpawnCountdownTimer : MonoBehaviour
     [SerializeField] private bool enableRestartDebugLogs = true;
     [SerializeField] private bool logRootNamesOnRestart = true;
     [Header("XR Simulation")]
+#if UNITY_EDITOR
     [SerializeField] private bool loadSimulationSceneInEditor = true;
     [SerializeField] private string simulatedEnvironmentSceneName = "";
+#endif
 
     private bool countdownStarted;
     private bool countdownFinished;
@@ -65,11 +67,30 @@ public class ARSpawnCountdownTimer : MonoBehaviour
     private float remainingSeconds;
     private bool hasLoggedPostReloadRoots;
     private Coroutine endDialogRoutine;
+    private bool isPaused;
 
     public bool IsRunning => countdownStarted && !countdownFinished;
     public bool IsFinished => countdownFinished;
     public bool IsWin => countdownFinished && isWin;
     public float RemainingSeconds => remainingSeconds;
+    public bool IsPaused => isPaused;
+
+    /// <summary>Menjeda countdown timer (tidak membekukan Time.timeScale — lakukan di SimulationPauseMenuController).</summary>
+    public void PauseCountdown()
+    {
+        if (!countdownStarted || countdownFinished)
+        {
+            return;
+        }
+
+        isPaused = true;
+    }
+
+    /// <summary>Melanjutkan countdown timer yang sedang dijeda.</summary>
+    public void ResumeCountdown()
+    {
+        isPaused = false;
+    }
 
     public void SetCountdownSeconds(float seconds)
     {
@@ -105,6 +126,7 @@ public class ARSpawnCountdownTimer : MonoBehaviour
         countdownStarted = false;
         countdownFinished = false;
         isWin = false;
+        isPaused = false;
         remainingSeconds = Mathf.Max(0f, countdownSeconds);
         hasLoggedPostReloadRoots = false;
 
@@ -215,6 +237,12 @@ public class ARSpawnCountdownTimer : MonoBehaviour
         }
 
         if (countdownFinished)
+        {
+            return;
+        }
+
+        // Jika sedang dijeda, skip semua logika countdown.
+        if (isPaused)
         {
             return;
         }
